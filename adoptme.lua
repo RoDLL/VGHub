@@ -1,5 +1,5 @@
 local Config = {
-    WindowName = "V.G Hub",
+    WindowName = "Tisma",
     Color = Color3.fromRGB(255, 128, 64),
     Keybind = Enum.KeyCode.RightControl
 }
@@ -869,38 +869,6 @@ a = {
         )
         wait(2)
         ReplicatedStorage.API["PetAPI/ConsumeFoodItem"]:FireServer(Tea)
-    end,
-    ["dirty"] = function(c)
-        while c.Parent == Player.PlayerGui.AilmentsMonitorApp.Ailments do
-            wait()
-            spawn(
-                function()
-                    pcall(
-                        function()
-                            ReplicatedStorage.API["HousingAPI/ActivateFurniture"]:InvokeServer(
-                                Player,
-                                AilmentFurnitues["generic_shower"],
-                                "UseBlock",
-                                {
-                                    ["cframe"] = Player.Character.HumanoidRootPart.CFrame
-                                },
-                                Pet
-                            )
-                        end
-                    )
-                end
-            )
-        end
-
-        while wait() do
-            ReplicatedStorage.API["ToolAPI/Unequip"]:InvokeServer(PetID)
-            Pet = ReplicatedStorage.API["ToolAPI/Equip"]:InvokeServer(PetID)
-            if Pet then
-                if Pet.Parent then
-                    break
-                end
-            end
-        end
     end,
     ["pizza_party"] = function(c)
         GoToStore("PizzaShop")
